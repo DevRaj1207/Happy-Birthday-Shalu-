@@ -1,0 +1,26 @@
+// Countdown Timer
+const countdownElement = document.getElementById("countdown");
+const birthdayDate = new Date("July 12, 2025 00:00:00").getTime();
+
+function updateCountdown() {
+    const now = new Date().getTime();
+    const timeLeft = birthdayDate - now;
+
+    if (timeLeft > 0) {
+        const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+        countdownElement.innerHTML = `Countdown: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+    } else {
+        countdownElement.innerHTML = "🎉 Happy Birthday Shalu! 🎉";
+    }
+}
+
+setInterval(updateCountdown, 1000);
+
+// Surprise Message
+function showMessage() {
+    document.getElementById("hiddenMessage").style.display = "block";
+}
